@@ -1,5 +1,7 @@
 @page "/"
 @namespace AJH657NETBlazor.Pages
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Config
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
@@ -14,12 +16,14 @@
     <base href="~/" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/TailwindCSS.js"></script>
+    <script src="https://kit.fontawesome.com/@(Config.GetValue<string>("FA")).js" crossorigin="anonymous"></script>
 
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet" />
     <link href="AJH657NETBlazor.styles.css" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-secondary">
     <component type="typeof(App)" render-mode="ServerPrerendered" />
 
     <div id="blazor-error-ui">

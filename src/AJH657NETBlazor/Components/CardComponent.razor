@@ -1,0 +1,11 @@
+@using AJH657NETBlazor.Components.Data
+@inherits CardComponentData
+
+<div class="font-mono bg-primary text-tertiary rounded-lg drop-shadow-lg">
+    <div class="">
+        @if (!string.IsNullOrEmpty(CardHeader))
+        {
+            <CardItemComponent TextColor="tertiary" BackgroundColor="accent" IconClass="fa-solid fa-house">@CardHeader</CardItemComponent>
+        }
+    </div>
+</div>

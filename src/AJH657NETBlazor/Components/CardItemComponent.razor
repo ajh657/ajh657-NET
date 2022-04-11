@@ -1,0 +1,21 @@
+@using AJH657NETBlazor.Components.Data
+@inherits CardItemComponentData
+
+<div>
+    <div class="p-@PaddingSize">
+        <p class="p-1 bg-@BackgroundColor text-@TextColor rounded-@RoundedSize drop-shadow-@ShadowSize">
+            @if (!string.IsNullOrWhiteSpace(IconClass))
+            {
+                <i class="@IconClass" />
+            }
+            @if (href != null)
+            {
+                <a href="@href" target="_blank">@ChildContent</a>
+            }
+            else
+            {
+                @ChildContent
+            }
+        </p>
+    </div>
+</div>
