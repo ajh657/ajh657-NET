@@ -2,10 +2,17 @@
 @inherits CardComponentData
 
 <div class="font-mono bg-primary text-tertiary rounded-lg drop-shadow-lg">
-    <div class="">
+    <div class="rounded-lg drop-shadow-lg">
         @if (!string.IsNullOrEmpty(CardHeader))
         {
             <CardItemComponent TextColor="tertiary" BackgroundColor="accent" IconClass="fa-solid fa-house">@CardHeader</CardItemComponent>
+        }
+    </div>
+    <br />
+    <div class="grid grid-rows-@CardItemRowsCount grid-flow-col gap-4">
+        @foreach (var item in CardItems)
+        {
+            <CardItemComponent BackgroundColor="secondary" TextColor="primary" IconClass="@item.IconClass" href="@item.Href" >@item.Content</CardItemComponent>
         }
     </div>
 </div>

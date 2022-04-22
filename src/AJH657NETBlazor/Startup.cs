@@ -1,7 +1,11 @@
+using AJH657NETBlazor.Util;
+using AJH657NETBlazor.Util.Intefaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.Azure;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,8 +29,15 @@ namespace AJH657NETBlazor
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddSingleton<State>();
+            services.AddSingleton<IBlobStorageServiceClientSolver, BlobStorageServiceClientSolver>();
+            services.AddSingleton<IBlobStorageClient, BlobStorageClient>();
+            services.AddSingleton<IBlobCache, BlobCache>();
+            services.AddSingleton<ICardItemClient, CardItemClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
